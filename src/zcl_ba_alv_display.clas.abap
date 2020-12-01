@@ -10,8 +10,10 @@ class zcl_ba_alv_display definition
     data o_alv_display_attr type ref to zcl_ba_alv_display_attr.
     data o_alv_display_event type ref to zif_ba_alv_event.
     data v_handle type slis_handl .
+    data v_name type string.
     methods constructor
       importing
+        iv_name              type string
         iv_handle            type slis_handl
         iv_parent            type ref to cl_gui_container
         io_alv_display_attr  type  ref to zcl_ba_alv_display_attr
@@ -85,6 +87,7 @@ class zcl_ba_alv_display implementation.
     create object o_alv
       exporting
         i_parent = iv_parent.
+    v_name = iv_name.
     v_handle = iv_handle.
     o_alv_display_attr =  io_alv_display_attr.
     o_alv_display_event =  io_alv_display_event.
