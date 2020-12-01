@@ -12,7 +12,6 @@ class zcl_ba_alv_display definition
     data v_handle type slis_handl .
     methods constructor
       importing
-        iv_name              type string
         iv_handle            type slis_handl
         iv_parent            type ref to cl_gui_container
         io_alv_display_attr  type  ref to zcl_ba_alv_display_attr
@@ -78,20 +77,18 @@ class zcl_ba_alv_display implementation.
 
   endmethod.
   method check_changed_data.
-
+    o_alv->check_changed_data( ).
   endmethod.
 
   method constructor.
     "创建FIELDS的ALV
     create object o_alv
       exporting
-        i_name   = iv_name
         i_parent = iv_parent.
     v_handle = iv_handle.
     o_alv_display_attr =  io_alv_display_attr.
     o_alv_display_event =  io_alv_display_event.
 
-    DATA(LV_NAME) = o_alv->get_name( ).
     me->register_event( ).
   endmethod.
 
